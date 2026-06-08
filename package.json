@@ -1,0 +1,25 @@
+{
+  "name": "@ccw-api/axios",
+  "version": "1.2.0",
+  "description": "Axios interceptors for ccw.site",
+  "license": "MIT",
+  "author": "MengFuzi",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "publish": "tsc --build && npm test"
+  },
+  "dependencies": {
+    "axios": "^1.17.0",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/crypto-js": "^4.2.2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.2",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11"
+  }
+}

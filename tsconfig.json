@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "outDir": "dist",
+    "types": ["jest", "node"],
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "declaration": true,
+    "module": "esnext"
+  },
+  "exclude": ["tests"],
+  "include": ["src"]
+}
