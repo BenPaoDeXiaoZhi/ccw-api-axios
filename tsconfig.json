@@ -6,8 +6,7 @@
     "rootDir": "src",
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "declaration": true,
-    "module": "esnext"
+    "declaration": true
   },
   "exclude": ["tests"],
   "include": ["src"]
