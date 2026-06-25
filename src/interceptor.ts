@@ -1,14 +1,9 @@
-import {
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
-} from "axios";
+import { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { token } from ".";
-import { HmacMD5 } from "crypto-js";
+import CryptoJS from "crypto-js";
 import { randomUUID } from "crypto";
-import { type } from "os";
 
+const { HmacMD5 } = CryptoJS;
 export let hmacKey: string = "";
 let guestId = randomUUID();
 
