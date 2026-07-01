@@ -1,11 +1,10 @@
 import { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { token } from ".";
 import CryptoJS from "crypto-js";
-import { randomUUID } from "crypto";
 
 const { HmacMD5 } = CryptoJS;
 export let hmacKey: string = "";
-let guestId = randomUUID();
+let guestId = CryptoJS.lib.WordArray.random(16).toString();
 
 interface HealthCheckResponse {
   body: {
