@@ -1,23 +1,23 @@
 {
   "name": "@ccw-api/axios",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Axios interceptors for ccw.site",
   "license": "MIT",
   "author": "MengFuzi",
   "type": "module",
-  "main": "dist/node/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/node/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {
     "test": "jest",
-    "build": "tsc --project tsconfig.node.json && tsc --project tsconfig.esm.json && tsc --project tsconfig.types.json",
+    "build": "tsup",
     "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
@@ -29,6 +29,8 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.9.2",
     "jest": "^30.4.2",
-    "ts-jest": "^29.4.11"
+    "ts-jest": "^29.4.11",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
   }
 }

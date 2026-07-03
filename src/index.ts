@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosInterceptorOptions, create } from "axios";
+import { AxiosInstance, create } from "axios";
 import { reqInterceptor, resInterceptor } from "./interceptor";
 
 export let token: string = "";

@@ -3,7 +3,6 @@
     "lib": ["ESNext", "DOM"],
     "outDir": "dist",
     "types": ["jest", "node"],
-    "rootDir": "src",
     "esModuleInterop": true,
     "noImplicitAny": true,
     "declaration": true,
