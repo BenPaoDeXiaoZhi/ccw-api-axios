@@ -45,7 +45,9 @@ export async function reqInterceptor(
   req: { headers: Record<string, string>; data?: any },
   timeStamp: number = Date.now(),
 ): Promise<InternalAxiosRequestConfig> {
-  req.headers["Cookie"] = token ? `token=${token}` : "";
+  if (token.length > 0) {
+    req.headers["Cookie"] = `token=${token}`;
+  }
   req.headers["Guest-Id"] = token ? "" : guestId;
   const hmacKey = await getHmacKey(req.headers);
   req.headers["B"] = `${timeStamp}`;
