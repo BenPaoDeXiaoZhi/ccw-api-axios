@@ -1,9 +1,10 @@
 import { AxiosInstance, create } from "axios";
-import { reqInterceptor, resInterceptor } from "./interceptor";
+import { clearHmacKey, reqInterceptor, resInterceptor } from "./interceptor";
 
 export let token: string = "";
 export function setToken(tok: string): void {
   token = tok;
+  clearHmacKey();
 }
 
 export const ccwAxios: AxiosInstance = create({

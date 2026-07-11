@@ -1,8 +1,11 @@
 import { randomUUID } from "crypto";
 import { getHmacKey } from "../src/interceptor";
+import test from "node:test";
+import assert from "assert";
 test("expect key to be lower", async () => {
   for (let i = 0; i < 10; i++) {
-    expect(await getHmacKey({ "Guest-id": randomUUID() })).toMatch(
+    assert.match(
+      await getHmacKey({ "Guest-id": randomUUID() }),
       /[a-z|0-9]{8}/,
     );
   }

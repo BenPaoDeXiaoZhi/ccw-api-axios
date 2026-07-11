@@ -1,6 +1,6 @@
 {
   "name": "@ccw-api/axios",
-  "version": "5.0.0",
+  "version": "6.0.1",
   "description": "Axios interceptors for ccw.site",
   "license": "MIT",
   "author": "MengFuzi",
@@ -8,6 +8,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -16,7 +19,7 @@
     }
   },
   "scripts": {
-    "test": "jest",
+    "test": "tsx tests/entry.test.ts",
     "build": "tsup",
     "prepublishOnly": "npm run build && npm test"
   },
@@ -26,11 +29,12 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/jest": "^30.0.0",
     "@types/node": "^25.9.2",
-    "jest": "^30.4.2",
-    "ts-jest": "^29.4.11",
     "tsup": "^8.5.1",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
   }
 }

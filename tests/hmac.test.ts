@@ -3,6 +3,8 @@ const a = "b3410505cfa032b150b2619288ad755c";
 const b = 1780753018840;
 import { reqInterceptor } from "../src/interceptor";
 import { setToken } from "../src/index";
+import test from "node:test";
+import assert from "assert";
 test("expect sign to be verified", async () => {
   setToken(id);
   const origin = {
@@ -15,6 +17,6 @@ test("expect sign to be verified", async () => {
     },
   };
   const req = await reqInterceptor(origin, b);
-  expect(req.headers.A).toEqual(a);
-  expect(req.headers.B).toEqual(String(b));
+  assert.equal(req.headers.A, a);
+  assert.equal(req.headers.B, String(b));
 });

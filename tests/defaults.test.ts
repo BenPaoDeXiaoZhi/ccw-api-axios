@@ -1,12 +1,14 @@
 import { reqInterceptor } from "../src/interceptor";
 import { setToken, token } from "../src";
 import { randomUUID } from "crypto";
+import test from "node:test";
+import assert from "assert";
 
 test("expect has guest-id when not login", async () => {
   const cfg = await reqInterceptor({
     headers: {},
   });
-  expect(cfg.headers["Guest-id"]).not.toBe("");
+  assert.notEqual(cfg.headers["Guest-id"], "");
 });
 
 test("expect guest-id to be empty when logged in", async () => {
@@ -14,6 +16,6 @@ test("expect guest-id to be empty when logged in", async () => {
   const cfg = await reqInterceptor({
     headers: {},
   });
-  expect(cfg.headers["Cookie"]).toBe(`token=${token}`);
-  expect(cfg.headers["Guest-id"]).toBeFalsy();
+  assert.equal(cfg.headers["Cookie"], `token=${token}`);
+  assert.equal(cfg.headers["Guest-id"], undefined);
 });

@@ -41,14 +41,19 @@ export async function getHmacKey(headers: Record<string, string>) {
   return getHmacKey(headers);
 }
 
+export function clearHmacKey() {
+  hmacKey = "";
+}
+
 export async function reqInterceptor(
   req: { headers: Record<string, string>; data?: any },
   timeStamp: number = Date.now(),
 ): Promise<InternalAxiosRequestConfig> {
   if (token.length > 0) {
     req.headers["Cookie"] = `token=${token}`;
+  } else {
+    req.headers["Guest-Id"] = guestId;
   }
-  req.headers["Guest-Id"] = token ? "" : guestId;
   const hmacKey = await getHmacKey(req.headers);
   req.headers["B"] = `${timeStamp}`;
   req.headers["A"] = HmacMD5(

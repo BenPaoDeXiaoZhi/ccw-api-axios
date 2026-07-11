@@ -1,6 +1,9 @@
+import test from "node:test";
 import { resInterceptor } from "../src/interceptor";
+import assert from "assert";
+
 test("expect throw error when status isn't 200", async () => {
-  await expect(
+  await assert.rejects(
     resInterceptor({
       data: {
         body: null,
@@ -9,7 +12,10 @@ test("expect throw error when status isn't 200", async () => {
         status: 403,
       },
     }),
-  ).rejects.toThrow("ccw axios Request failed: error");
+    {
+      message: "ccw axios Request failed: error",
+    },
+  );
 });
 test("expect origin data when status is 200", async () => {
   const res = await resInterceptor({
@@ -20,5 +26,5 @@ test("expect origin data when status is 200", async () => {
       status: 200,
     },
   });
-  expect(res.data.body).toBe(1234);
+  assert.equal(res.data.body, 1234);
 });

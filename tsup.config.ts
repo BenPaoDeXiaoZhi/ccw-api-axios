@@ -7,4 +7,5 @@ export default defineConfig({
       ignoreDeprecations: "6.0",
     },
   },
+  clean: true,
 });
