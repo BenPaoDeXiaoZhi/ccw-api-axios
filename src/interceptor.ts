@@ -1,10 +1,18 @@
 import { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { token } from ".";
-import CryptoJS from "crypto-js";
+import md5 from "blueimp-md5";
 
-const { HmacMD5 } = CryptoJS;
 export let hmacKey: string = "";
-let guestId = CryptoJS.lib.WordArray.random(16).toString();
+function getRandomId() {
+  let tmp = "";
+  for (let i = 0; i < 4; i++) {
+    tmp += Math.round(Math.random() * 4096)
+      .toString(16)
+      .padStart(0);
+  }
+  return tmp;
+}
+let guestId = getRandomId();
 
 interface HealthCheckResponse {
   body: {
@@ -56,10 +64,7 @@ export async function reqInterceptor(
   }
   const hmacKey = await getHmacKey(req.headers);
   req.headers["B"] = `${timeStamp}`;
-  req.headers["A"] = HmacMD5(
-    `ccw${JSON.stringify(req.data)}${timeStamp}`,
-    hmacKey,
-  ).toString();
+  req.headers["A"] = md5(`ccw${JSON.stringify(req.data)}${timeStamp}`, hmacKey);
   return req as InternalAxiosRequestConfig;
 }
 
