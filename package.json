@@ -1,6 +1,6 @@
 {
   "name": "@ccw-api/axios",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Axios interceptors for ccw.site",
   "license": "MIT",
   "author": "MengFuzi",
@@ -18,10 +18,10 @@
       "require": "./dist/index.cjs"
     }
   },
-  "unpkg": "dist/index.global.js",
+  "unpkg": "dist/index.iife.js",
   "scripts": {
-    "test": "tsx tests/entry.test.ts",
-    "build": "tsup",
+    "test": "tsx --test",
+    "build": "tsdown",
     "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
@@ -31,8 +31,8 @@
   "devDependencies": {
     "@types/blueimp-md5": "^2.18.2",
     "@types/node": "^25.9.2",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.22.12",
     "tsx": "^4.23.0",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.0"
   }
 }
